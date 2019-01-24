@@ -1,0 +1,113 @@
+<ion-view view-title="Receipt">
+    <ion-content  class="ParentContent">
+           
+        <ion-item class="item-text-wrap">
+
+                <div style="border:1px solid lightgray;margin:-10px;padding:5px;font-size: 20px;margin-bottom: 20px;">
+                        <center>
+                            Receipt
+                        </center>
+                      </div>
+
+                      <div style="border-bottom:1px solid lightgray;margin-bottom: 15px">
+                            <div class="row">
+                                    <div class="col col-50"><b>Date</b></div>
+                                    <div class="col col-10">:</div>
+                                    <div class="col">{{receiptDetails.CASH_DATE}}</div>
+                                  </div>
+                                  <div class="row">
+                                        <div class="col col-50"><b>Receipt No</b></div>
+                                        <div class="col col-10">:</div>
+                                        <div class="col">{{receiptDetails.receiptNumber}}</div>
+                                      </div>
+                      </div>
+
+
+            <!-- <div style="border:1px solid lightgray;">
+                   
+                  </div> -->
+                  
+                  <div style="font-size: 20px;margin-bottom: 7px">
+                      <center>
+                        Customer Details
+                      </center>
+                  </div>
+                  
+                  <div style="border-bottom: 1px solid lightgray;margin-bottom: 10px;" >
+                        <div class="row">
+                          <div class="col col-50"><b>Account Number</b></div>
+                          <div class="col col-10">:</div>
+                          <div class="col">{{receiptDetails.ACCOUNT_NO}}</div>
+                        </div>
+                   
+                      <div class="row">
+                          <div class="col col-50"><b>Customer Name</b></div>
+                          <div class="col col-10">:</div>
+                          <div class="col">{{receiptDetails.CUSTOMER_NAME}}</div>
+                      </div>
+                      <div class="row">
+                          <div class="col col-50"><b>Mobile No</b></div>
+                          <div class="col col-10">:</div>
+                          <div class="col">{{receiptDetails.MOBILE_NO}}</div>
+                      </div>
+                      <div class="row ">
+                          <div class="col col-50"><b>Email ID</b></div>
+                          <div class="col col-10">:</div>
+                          <div class="col">{{receiptDetails.EMAIL_ID}}</div>
+                      </div>
+                      <div class="row">
+                          <div class="col col-50"><b>Address</b></div>
+                          <div class="col col-10">:</div>
+                          <div class="col">{{receiptDetails.ADDRESS}}</div>
+                      </div>      
+                  </div>
+                  <div style="font-size: 20px;margin-bottom: 7px">
+                        <center>
+                          Payment Details
+                        </center>
+                    </div>
+                    
+                    <div style="margin-bottom: 10px;" >
+                            <div class="row">
+                                    <div class="col col-50"><b>Remarks</b></div>
+                                    <div class="col col-10">:</div>
+                                    <div class="col">{{receiptDetails.remarks}}</div>
+                                </div> 
+                                <div class="row">
+                                        <div class="col col-50"><b>Transaction Type</b></div>
+                                        <div class="col col-10">:</div>
+                                        <div class="col">{{receiptDetails.paymentType}}</div>
+                                    </div>  
+                                    <div class="row">
+                                            <div class="col col-50"><b>Amount Received</b></div>
+                                            <div class="col col-10">:</div>
+                                            <div class="col">{{receiptDetails.amountPaid}}</div>
+                                        </div> 
+                                        <div ng-if='receiptDetails.paymentType=="CHEQUE"'>
+                                                <div class="row">
+                                                        <div class="col col-50"><b>Cheque No</b></div>
+                                                        <div class="col col-10">:</div>
+                                                        <div class="col">{{receiptDetails.CHEQUE_NUMBER}}</div>
+                                                    </div> 
+                                                    <div class="row">
+                                                            <div class="col col-50"><b>Cheque Date</b></div>
+                                                            <div class="col col-10">:</div>
+                                                            <div class="col">{{receiptDetails.CHEQUE_DATE}}</div>
+                                                        </div> 
+                                                        <div class="row">
+                                                                <div class="col col-50"><b>Bank Name</b></div>
+                                                                <div class="col col-10">:</div>
+                                                                <div class="col">{{receiptDetails.BANK_NAME}}</div>
+                                                            </div> 
+                                        </div>    
+                    </div>
+            <!-- <button class="button button-block button-dark">Plan Details</button>    -->
+        </ion-item>
+        
+
+    </ion-content>
+
+    <div >
+     
+    </div>
+</ion-view>

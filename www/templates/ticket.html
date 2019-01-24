@@ -1,0 +1,33 @@
+<ion-view view-title="Ticket">
+    <ion-content class="ParentContent">
+        <form name="frmTickets" novalidate>
+            <ion-item class="item-text-wrap">
+                <label>What You Need to raise :<span>*</span></label>
+                <br>
+
+                <select class="ion-input-select" name="type" ng-model="ticket.type"required>
+                    <option value="">Select Problem Type</option>
+					<option value="Query">Query</option>
+					<option value="Raise a complaint">Raise a complaint</option>
+					<option value="Feedback">Feedback</option>
+					<option value="Request">Request</option>
+                </select>
+             
+             <label> Details of your Post :</label>
+             <br>
+             <textarea  name="description" ng-model="ticket.description"></textarea>
+
+         </ion-item>
+         <div class="row">
+            <div class="col col-25">
+            </div>
+            <div class="col col-50" style="text-align: right;">
+                <button ng-click="ticket() " class="button button-block button-energized ">Submit</button>
+            </div>
+            <div class="col col-25">
+            </div>
+        </div>
+    </form>
+
+</ion-content>
+</ion-view>

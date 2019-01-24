@@ -1,0 +1,29 @@
+appCtrl.controller('termsCondtionsCtrl', function($scope,$http,services,$state,$ionicLoading,$localStorage) {
+
+
+    $scope.$on('$ionicView.enter', function() {
+
+
+
+        $scope.data = "The contents of this website may include inaccuracies or typographical errors. Changes and updates to the website may be made at any time. Packages, prices and service offerings are liable to change at the instance of Fastway. Inclusion and deletion of channels and services is at the sole discretion of Fastway. No Refund of fixed duration pack is allowed and Cancellation of payment transaction is allowed. \n\nThis website may contain links to other web sites operated by third parties. You acknowledge that the website owner is providing these links to you only as a convenience. \n\nYou further acknowledge that the website owner is not responsible for any content of any such linked site or any further link contained in a link site, or any changes or updates to such sites. You specifically agree that the website owner shall not be responsible for unauthorized access to or alteration of your transmissions or data, any material or data sent or received or not sent or received, or any transactions entered into through the website. You specifically agree that the website owner is not responsible or liable for any threatening, defamatory, obscene, offensive or illegal content or conduct of any other party or any infringement of another's rights, including intellectual property rights. In no event shall Fastway be liable for any direct, indirect, punitive, incidental, special, consequential damages or any damages whatsoever including, without limitation, damages for loss of use, data or profits, arising out of or in any way connected with the use or performance of the website, with the delay or inability to use the website or related services, the provision of or failure to provide services, or for any information, software, products, services and related graphics obtained through the website, or otherwise arising out of the use of the website, whether based on contract, or otherwise, even if Fastway as the website owner has been advised of the possibility of damages.\n\nFastway does not endorse in anyway any advertisers/ contents of advertisers on its webpages. Please therefore verify the veracity of all information on your own before placing any reliance on such information. \n\n This agreement is governed by the laws of republic of India. You hereby irrevocably consent to the exclusive jurisdiction and venue of courts in Mumbai, Maharashtra, India in all disputes arising out of or relating to the use of the website. Use of the website is unauthorized in any jurisdiction that does not give effect to all provisions of these terms and conditions, including without limitation this paragraph. You agree to indemnify and hold the website owner, its subsidiaries, affiliates, officers and employees, harmless from any claim, demand, or damage, including reasonable attorneys' fees, asserted by any third party due to or arising out of your use of or conduct on the website. The website owner reserves the right to disclose any personal information about you or your use of the website, including its contents, without your prior permission if the website owner has a good faith belief that such action is necessary to: (1) conform to legal requirements or comply with legal process; (2) protect and defend the rights or property of the website owner or its affiliated companies; (3) enforce the terms of use; or (4) act to protect the interests of its members or others. If any part of this disclaimer is determined to be invalid or unenforceable pursuant to any applicable law including, but not limited to, the warranty disclaimers and liability limitations set forth above, then the invalid or unenforceable provision will be deemed superseded by a valid, enforceable provision that most closely matches the intent of the original provision and the remainder of the agreement shall continue in effect. Unless otherwise specified herein, the terms and conditions of this disclaimer constitutes the entire agreement between the user and the website owner with respect to the website and it supersedes all prior or contemporaneous communications and proposals, whether electronic, oral or written, between the user and the website owner with respect to the website and the information contained therein .\
+        This website, its appearance and contents is proprietary to Fastway, and is copyright protected.\n\nThe Fastway PlayBox is not sold by Fastway to the Subscriber. The Play Box shall at all times remain the exclusive property of Fastway. Subscriber is not authorised to sell, transfer, lease, encumber, pledge, assign or otherwise deal with all or part of the Play Box which is his/her possession. Subscriber undertakes to use the Play Box strictly in accordance with the Manual for use, provided along with the PLAYBOX. Any damage caused due to non-adherence to instructions will be at the sole responsibility of the subscriber. In the eventuality of expiration or termination of the subject subscriber account with Fastway for any reason whatsoever Subscriber undertakes to return the PLAYBOX to Fastway in full working condition. Subscriber authorizes Fastway to retrieve Fastway Play Box from Subscriber’s premises. If the Subscriber moves/relocates during the term of service, subscriber shall return Fastway Play Box to Fastway forthwith."
+
+        $scope.agree = function(type)
+        {
+            if(type=='agree')
+            {
+                $localStorage.agree = 1;
+                $state.go('common.customerSearch');
+            }
+            else
+            {
+                $state.go('login');
+
+            }
+        }
+        
+     
+     
+   });
+    
+   })

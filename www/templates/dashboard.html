@@ -1,0 +1,95 @@
+<ion-view view-title="Dashboard">
+    <ion-content  class="ParentContent">
+
+        <div style="width:100%;padding:10px;color:aliceblue;background-color: #77c2ee;text-align: center;font-weight: bold;font-size: 20px;margin: 3px">
+           Subscriber Details
+        </div>
+        <!-- <div class="row">
+            <div class="col col-50 db_card">
+                <div class="card">
+                    <div class="item item-text-wrap">
+                       Active: {{dashBoardData.c_active}}
+                    </div>
+                </div>
+            </div>
+            <div class="col col-50 db_card">
+                <div class="card">
+                    <div class="item item-text-wrap">
+                        Allocated: {{dashBoardData.c_allocated}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col col-50 db_card">
+                    <div class="card">
+                        <div class="item item-text-wrap">
+                             InActive: {{dashBoardData.c_inactive}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-50 db_card">
+                    <div class="card">
+                        <div class="item item-text-wrap">
+                            InStock: {{dashBoardData.c_instock}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="row">
+                <div class="col col-10">
+                </div>
+                <div class="col col-80" style="text-align: center;">
+                    <button ng-click="buttonClick('csearch')" class="button button-block button-energized ">Customer Search</button>
+                </div>
+                <div class="col col-10">
+                </div>
+            </div>
+             <div class="row">
+                <div class="col col-10">
+                </div>
+                <div class="col col-80" style="text-align: center;">
+                    <button ng-click="buttonClick('cactivation')" class="button button-block button-energized ">Customer Activation</button>
+                </div>
+                <div class="col col-10">
+                </div>
+            </div> -->
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+           <div class="row" style="padding:20%;padding-left:10px">
+            <div style="height: 15px;width: 15px;background-color: lightblue;border: none">
+
+            </div>
+             <span style="margin-left:5px;margin-top: -3px;font-weight: bold">Active </span> <span style="margin-left:5px;margin-top: -3px;font-weight: bold"> [{{active}}]</span> 
+           </div>
+           <div class="row" style="padding:20%;padding-left:10px">
+                <div style="height: 15px;width: 15px;background-color: pink;border: none">
+
+                    </div>
+                     <span style="margin-left:5px;margin-top: -3px;;font-weight: bold">Suspended [{{suspended}}]</span> 
+            </div>
+            <div class="row" style="padding:20%;padding-left:10px">
+                    <div style="height: 15px;width: 15px;background-color: violet;border: none">
+
+                        </div>
+                         <span style="margin-left:5px;margin-top: -3px;;font-weight: bold">Terminated [{{terminated}}]</span> 
+                </div>
+         </div>
+
+    </div>
+    <div class="row">
+            <div class="col col-10">
+            </div>
+            <div class="col col-80" style="text-align: center;">
+                <button ng-click="buttonClick('csearch')" class="button button-block button-energized ">Customer Search</button>
+            </div>
+            <div class="col col-10">
+            </div>
+        </div>
+        </ion-content>
+</ion-view>
+  

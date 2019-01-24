@@ -1,0 +1,119 @@
+<ion-view view-title="{{loginType}}">
+    <ion-content  class="ParentContent">
+        <ion-item class="item-text-wrap">
+            <form name="frmCustomerSearch" novalidate>
+                <div ng-if="!customerSearch">
+                <select class="ion-input-select" ng-disabled = "customerSearch" name="categoryField" ng-options="category.key as category.name for category in categoryType" ng-model="category.categoryKey" required>
+                <option value="">Select Account Type</option>
+            </select>
+                <p ng-show="frmCustomerSearch.categoryField.$invalid && !frmCustomerSearch.categoryField.$pristine" class="validation-msg">Category is required.</p>
+                <div  class="row" style="margin-left: -10px;">
+                    <div class="col col-90">
+                        <label class="item item-input" style="width:100%;">
+					<input type="text" ng-disabled = "customerSearch" name="customerSearchField" ng-model="category.categoryValue" style="border:none" required>
+			            </label>
+                    </div>
+                    <div class="col col-10" style="margin-left: -15px;">
+                        <button class="button button-energized icon ion-search" ng-show="searchCustomer" ng-disabled="frmCustomerSearch.$invalid" ng-click="frmCustomerSearch.$valid&&search()"></button>
+                    </div>
+                </div>
+            </div>
+                <!-- <p ng-show="frmCustomerSearch.customerSearchField.$invalid && !frmCustomerSearch.customerSearchField.$pristine" class="validation-msg">Category type is required.</p> -->
+            </form>
+            <p class="validation-msg">{{errorMsg}} </p>
+            <div ng-if="customerDataShow">
+                  <div class="row">
+                    <div class="col col-50">Account Number</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{category.categoryValue}}</div>
+                </div>
+             
+                <div class="row">
+                    <div class="col col-50">Customer Name</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.CUSTOMER_NAME}} {{customerData.lastname}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Mobile No</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.MOBILE_NO}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Email ID</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.EMAIL_ID}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Address</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.ADDRESS}}</div>
+                </div>
+                 <div class="row">
+                    <div class="col col-50">LCO Code</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.LCO_ACCOUNT_NO}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Due Date</div>
+                    <div class="col col-10">:</div>
+                    <div  class="col">{{customerData.DUE_DATE}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-50"> Total Due Amount</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{roundNumber(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)}} <button ng-if="!checkNegativeNumber(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)" class="pay-btn" ng-click="paytm(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)">Pay now</button></button></div>
+                </div>
+                <div class="row" ng-if="customerData.type!='C'">
+                    <div class="col col-50">Customer Type</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.CUSTOMER_TYPE}}</div>
+                </div>
+                <div class="row" ng-if ="customerData.type!='C'">
+                    <div class="col col-50">Pay Term</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.payterm==undefined?'Not Mentioned':customerData.payterm}}</div>
+                </div>
+                <div class="row">
+                    <div class="col col-50">Service Status</div>
+                    <div class="col col-10">:</div>
+                    <div class="col">{{customerData.SERVICE_STATUS}}</div>
+                </div>
+                <div class="row" ng-repeat = "service in customerData.clientServiceData">
+                 <!--  <button  ng-click="(service.status=='ACTIVE') && showPlanActivities(service) " class="{{service.status=='ACTIVE'?'button button-block button-balanced':'button button-block button-assertive'}} ">{{service.serviceCode}}: {{service.status}}</button> -->
+
+                 <button  ng-click="(service.status!='TERMINATED') && (service.status!='PROCESSING') && showPlanActivities(service) " class="  {{(service.status=='ACTIVE')?'button button-block button-balanced':((service.status=='SUSPENDED')?'button button-block button-assertive':'button-block button-energized')}}">{{service.id}} {{service.serviceCode}}: {{service.status}} </button>
+
+               
+                </div>
+
+            </div>
+            <!-- <button class="button button-block button-dark">Plan Details</button>    -->
+        </ion-item>
+         <div class="row" ng-if="customerDataShow">
+                <div class="col col-25">
+                </div>
+                <div class="col col-50" style="text-align: right;">
+                    <button  ng-click="showPlansInfo() " class="button button-block button-energized ">Plan Details</button>
+                </div>
+                <div class="col col-25">
+                </div>
+            </div>
+
+    </ion-content>
+
+    <div >
+        <ion-floating-menu button-color="green">
+              <ion-floating-item ng-if="!customerSearch" ng-click="payment()" button-color="green" icon="icon ion-plus" text="Online Payment"></ion-floating-item>
+          
+            <ion-floating-item ng-click="AddPlan()" button-color="green" icon="icon ion-plus" text="Add Plan"></ion-floating-item>
+            <ion-floating-item ng-click="changePlan()" button-color="green" icon="icon ion-loop" text="Change Plan"></ion-floating-item>
+            <ion-floating-item ng-click="cancelPlan()" button-color="green" icon="icon ion-close" text="Cancel Plan"></ion-floating-item>
+            <ion-floating-item ng-if="!customerSearch" ng-click="SuspendPlan('suspend')" button-color="green" icon="icon ion-close" text="Suspend Plan"></ion-floating-item>
+            <ion-floating-item ng-if="!customerSearch" ng-click="SuspendPlan('reactivate')" button-color="green" icon="icon ion-close" text="Reactivate Plan"></ion-floating-item>
+			 <ion-floating-item ng-if="customerSearch" ng-click="Ticket()" button-color="green" icon="icon ion-plus" text="Create Ticket"></ion-floating-item>
+
+      
+           
+        </ion-floating-menu>​
+    </div> 
+</ion-view>

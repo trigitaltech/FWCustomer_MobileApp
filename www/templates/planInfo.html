@@ -1,0 +1,50 @@
+<ion-view view-title="Customer Plans">
+<ion-item style="border:none">
+  <div class="addPlan">Plan Details</div>
+ </ion-item>
+  <ion-content  class="ParentContent" style="margin-top:50px;">
+  	<ion-item>
+    <div ng-if="plan.PLAN_STATUS == 'Active'" class = "card" ng-repeat="plan in activePlansData">
+   <div class = "item item-text-wrap">
+
+		 <table  style="width: 100%;"  >
+			<!-- <tr>
+				<td style="width: 50%">Plan Id</td>
+				<td style="width: 5%">:</td>
+				<td style="width: 40%">{{plan.PLAN_ID}}</td>
+
+			</tr> -->
+   		<tr>
+   			<td style="width: 50%">Plan Name</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{plan.PLAN_NAME}}</td>
+
+   		</tr>
+   		<!-- <tr>
+   			<td style="width: 50%">Plan Code</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{plan.planCode}}</td>
+   		</tr> -->
+   		<tr>
+   			<!-- <td style="width: 50%">Price</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{plan.price}}</td> -->
+   		</tr>
+      <tr>
+        <td style="width: 50%">Status</td>
+        <td style="width: 5%">:</td>
+        <td style="width: 40%">{{plan.PLAN_STATUS}}</td>
+      </tr>
+   	</table>
+    
+ </div>
+   </div>
+     <p style="color:red;text-align: center;font-size: 20px">
+      {{errorMsg}}
+    </p>
+  
+
+</ion-item>
+  </ion-content>
+
+</ion-view>

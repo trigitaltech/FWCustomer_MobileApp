@@ -1,0 +1,24 @@
+<div>
+	<form name="frmCancelPlan">
+	<label>Select Reason</label>
+
+	<select class="ion-input-select" name="reason" ng-model="cancel.selectedReason" required>
+		<option value="">Select Reason</option>
+		<option value="Customer Non Payment">Customer Non Payment</option>
+        <option value="Customer Not Interested">Customer Not Interested</option>
+	</select>
+	 <p ng-show="frmCancelPlan.reason.$invalid && !frmCancelPlan.reason.$pristine" class="validation-msg">Select Reason is required.</p>
+	<br>
+	<label>Description</label>
+	<textarea name="description" name="description" ng-model="cancel.description" required></textarea>
+	 <p ng-show="frmCancelPlan.description.$invalid && !frmCancelPlan.description.$pristine" class="validation-msg">Description is required.</p>
+	<div class="row">
+	<div class="col">
+	<button ng-click="closePopup()" class="button button-block button-energized">Cancel</button>	
+	</div>
+	<div class="col">
+		<button ng-disabled="frmCancelPlan.$invalid" ng-click="frmCancelPlan.$valid&&cancelPlanSubmit()" class="button button-block button-positive">Save</button>
+	</div>
+	</div>
+</form>
+</div>

@@ -1,0 +1,28 @@
+<div class="loginwap">
+  <div class="outer">
+  <div class="login_logo"><img src="img/logo.png"></div>
+  <div class="login_boxwap">
+    <form name="fastway_login">
+    <div class="list login_formwap">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">IP Address</span>
+        <input type="text" name="ipaddress" placeholder="IP Address" ng-model="ip.ipaddress" required>
+      </label>
+       <p ng-show="fastway_login.ipaddress.$invalid && !fastway_login.ipaddress.$pristine" class="validation-msg">IP Address is required.</p>
+
+    <!--   <label class="item item-input item-floating-label">
+        <span class="input-label">Port Number</span>
+        <input type="text" name="portnumber" placeholder="Port Number" ng-model="ip.portnumber" required>
+      </label>
+      <p ng-show="fastway_login.portnumber.$invalid && !fastway_login.portnumber.$pristine" class="validation-msg">Port Number is required.</p> -->
+      <br>
+      <button class="login_btn" ng-click="saveIPDetails()">next</button>
+      <br><br>
+      <!--  <p style="color:red;text-align: center;font-size: 20px">
+      {{errorMsg}}
+    </p> -->
+    </div>
+    </form>
+  </div>
+  </div><!--login_boxwap-->
+</div><!--loginwap-->

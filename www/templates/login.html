@@ -1,0 +1,28 @@
+<div class="loginwap">
+  <div class="outer">
+  <div class="login_logo"><img src="/img/fastway.jpg"></div>
+  <div class="login_boxwap">
+    <form name="fastway_login">
+    <div class="list login_formwap">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">UserName</span>
+        <input type="text" name="userName" placeholder="UserName" ng-model="login.userName" required>
+      </label>
+       <p ng-show="fastway_login.userName.$invalid && !fastway_login.userName.$pristine" class="validation-msg">Username is required.</p>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Password</span>
+        <input type="password" name="password" placeholder="Password" ng-model="login.password" required>
+      </label>
+      <p ng-show="fastway_login.password.$invalid && !fastway_login.password.$pristine" class="validation-msg">Password is required.</p>
+      <br>
+      <button class="login_btn" ng-click="doLogin()">Login</button>
+      <br><br>
+       <p style="color:red;text-align: center;font-size: 20px">
+      {{error}}
+    </p>
+    </div>
+    </form>
+  </div>
+  </div><!--login_boxwap-->
+</div><!--loginwap-->

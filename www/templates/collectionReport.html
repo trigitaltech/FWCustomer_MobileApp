@@ -1,0 +1,38 @@
+<ion-view view-title="Collection Report">
+<ion-item style="border:none">
+  <!-- <div class="addPlan">Plan Details</div> -->
+ </ion-item>
+  <ion-content  class="ParentContent" style="margin-top:50px;">
+  	<ion-item>
+    <div  class = "card" ng-repeat="plan in collectionDate">
+   <div class = "item item-text-wrap">
+
+		 <table  style="width: 100%;"  >
+			
+   		<tr>
+   			<td style="width: 50%">Payment Date</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{plan.PAYMENT_DATE}}</td>
+
+   		</tr>
+   	
+   		<tr>
+   			<td style="width: 50%">No of Payment</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{plan.NO_OF_PAYMENTS}}</td>
+   		</tr>
+      <tr>
+        <td style="width: 50%">Total Amount</td>
+        <td style="width: 5%">:</td>
+        <td style="width: 40%">{{plan.TOTAL_AMOUNT}}</td>
+      </tr>
+   	</table>
+    
+ </div>
+   </div>
+   
+
+</ion-item>
+  </ion-content>
+
+</ion-view>

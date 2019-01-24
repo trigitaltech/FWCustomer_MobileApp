@@ -1,0 +1,32 @@
+<div>
+	<span><img ng-click="closePopupActivity()"  class="popupClose" src="img/close.png"></span>
+	<div ng-if="suspendTab">
+	<label  class="popupLables" ng-click="AddPlan()"><b>Add Plan</b></label>
+		</div>
+		<div ng-if="suspendTab">
+	<label  class="popupLables" ng-click="changePlan()"><b>Change Plan</b></label>
+	</div>
+		<div ng-if="suspendTab">
+	<label  class="popupLables" ng-click="renewalPlan()"><b>show Plans</b></label>
+	</div>
+	<div ng-if="suspendTab">
+	<label  class="popupLables" ng-click="cancelPlan()"><b>Cancel Plan</b>
+	</label>
+
+</div>
+	<div ng-if="suspendTab">
+	<label  class="popupLables" ng-click="retrackPlan()"><b>Retrack</b>
+	</label>
+
+</div>
+<div ng-if="suspendTab">
+	<label   class="popupLables" ng-click="SuspendPlan('suspend')"><b>Suspend</b>
+	</label>
+</div>
+<div ng-if="!suspendTab">
+	<label  class="popupLables" ng-click="reactivate('reactivate')"><b>Re-activate</b>
+	</label>
+</div>
+
+
+</div>

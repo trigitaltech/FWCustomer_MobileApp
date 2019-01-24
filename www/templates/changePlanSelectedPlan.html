@@ -1,0 +1,73 @@
+<ion-view view-title="Customer Active Plans">
+<ion-item style="border:none">
+  <div class="addPlan">New Selected Plan List</div>
+ </ion-item>
+  <ion-content  class="ParentContent" style="margin-top:50px;">
+  	<ion-item>
+            <div class= "text"  ng-repeat="plans in changePlanSelectedPlans">
+                    <div class = "card" ng-repeat="plan in plans.plan">
+                     <div class = "item item-text-wrap">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 40%">Plan Name</td>
+                                <td style="width: 5%">:</td>
+                                <td style="width: 50%">{{plans.PLAN_LIST_NAME}}</td>
+                 
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">City</td>
+                                <td style="width: 5%">:</td>
+                 
+                                <td style="width: 50%">{{plans.CITY}}</td>
+                                <!-- <td><input type="checkbox" id="myCheck" ng-change= "planSelected(plans,plan)" ng-model="plan.checkStatus" ></td> -->
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">Code</td>
+                                <td style="width: 5%">:</td>
+                                <td style="width: 50%">{{plan.CODE}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">Description</td>
+                                <td style="width: 5%">:</td>
+                                <td style="width: 50%">{{plan.DESCRIPTION}}</td>
+                            </tr>
+                      </table>
+                      </div>
+                     
+                  </div>
+                    </div>
+                    <div class="text">
+                        Total Amount: {{totalPrice}}
+                      </div>
+                      <div style = "margin-top:8px" class="text">
+                        <span style="color:red">*</span> The price includes the NCF and 18% GST 
+                    </div>
+     <p style="color:red;text-align: center;font-size: 20px">
+      {{errorMsg}}
+    </p>
+    <!-- <div class="row" ng-if="plansSelected.length>0">
+            <div class="col col-25">
+            </div>
+            <div class="col col-40" style="text-align: right;"><button ng-click="addPlans()" class="button button-block button-energized">Add Plan</button>
+            </div>
+            <div class="col col-25">
+            </div>
+          </div> -->
+  
+
+</ion-item>
+
+  </ion-content>
+  <div class="bar" style="position:absolute; bottom:0; text-align:center" >
+ 
+        <div style="margin-top:-25px" class="row">
+          <div class="col col-50">
+              <button ng-click="back()" class="button button-block button-dark ">BACK</button>
+          </div>
+          <div class="col">
+              <button ng-click="paytm()" class="button button-block button-energized">Change Plan</button>
+          </div>
+        </div>
+     
+    </div>
+</ion-view>

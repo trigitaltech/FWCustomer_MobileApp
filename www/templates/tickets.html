@@ -1,0 +1,52 @@
+<ion-view view-title="Tickets">
+    <ion-content class="ParentContent">
+        <form name="frmTickets" novalidate>
+            <ion-item class="item-text-wrap">
+                <label>Problem Code <span>*</span></label>
+                <br>
+
+                <select class="ion-input-select" name="problemType" ng-options="problem.id as problem.mCodeValue for problem in problemsData" ng-change="getSubCategory(tickets.problemId)" ng-model="tickets.problemId" required>
+                    <option value="">Select Problem Type</option>
+                </select>
+
+                <p ng-show="frmTickets.problemType.$invalid && !frmTickets.problemType.$pristine" class="validation-msg">Problem Type is required.</p>
+
+                <label>Sub Category <span>*</span></label>
+                <br>
+             
+                 <select class="ion-input-select" name="subCategoryType" ng-options="sub.subCategory as sub.subCategory for sub in subCategoryList" ng-model="tickets.subCategory" required>
+                 <option value="">Select SubCategory Type</option>
+                </select>
+             <p ng-show="frmTickets.subCategoryType.$invalid && !frmTickets.subCategoryType.$pristine" class="validation-msg">SubCategory is required.</p>
+              <label>Team <span>*</span></label>
+                <br>
+             
+                 <select class="ion-input-select" name="team" ng-options="team.id as team.teamCode for team in teams" ng-model="tickets.team" required>
+                 <option value="">Select Team</option>
+                </select>
+             <p ng-show="frmTickets.team.$invalid && !frmTickets.team.$pristine" class="validation-msg">SubCategory is required.</p>
+              <label>Team User <span>*</span></label>
+                <br>
+             
+                 <select class="ion-input-select" name="teamUser" ng-options="teamUser.id as teamUser.userName for teamUser in teamUsers" ng-model="tickets.teamUser" required>
+                 <option value="">Select Team User</option>
+                </select>
+             <p ng-show="frmTickets.teamUser.$invalid && !frmTickets.teamUser.$pristine" class="validation-msg">Team User is required.</p>
+             <label> Description :</label>
+             <br>
+             <textarea ng-model="tickets.Description" name="description"></textarea>
+
+         </ion-item>
+         <div class="row">
+            <div class="col col-25">
+            </div>
+            <div class="col col-50" style="text-align: right;">
+                <button ng-disabled="frmTickets.$invalid" ng-click="frmTickets.$valid && addTicket(frmTickets) " class="button button-block button-energized ">Submit</button>
+            </div>
+            <div class="col col-25">
+            </div>
+        </div>
+    </form>
+
+</ion-content>
+</ion-view>

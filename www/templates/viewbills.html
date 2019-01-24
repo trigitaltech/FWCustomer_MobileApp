@@ -1,0 +1,45 @@
+<ion-view view-title="Bills">
+<!--<ion-item style="border:none">
+  <div class="addPlan">Ticket Details</div>
+ </ion-item>-->
+  <ion-content  class="ParentContent" style="margin-top:50px;">
+  	<ion-item>
+    <div  class = "card" ng-repeat="bill in bills">
+   <div class = "item item-text-wrap">
+
+		 <table  style="width: 100%;"  >
+			<!-- <tr>
+				<td style="width: 50%">Plan Id</td>
+				<td style="width: 5%">:</td>
+				<td style="width: 40%">{{plan.PLAN_ID}}</td>
+
+			</tr> -->
+   		<tr>
+   			<td style="width: 50%">BILLNO</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{bill.RECEIPT_NO}}</td>
+
+   		</tr>
+   		<tr>
+   			<td style="width: 50%">EndDate</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{bill.DUE_DATE}}</td>
+   		</tr> 
+   		<tr>
+   			<td style="width: 50%">DueAmount</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{bill.AMOUNT}}</td> 
+   		</tr>
+   	</table>
+    
+ </div>
+   </div>
+     <p style="color:red;text-align: center;font-size: 20px">
+      {{errorMsg}}
+    </p>
+  
+
+</ion-item>
+  </ion-content>
+
+</ion-view>

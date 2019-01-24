@@ -1,0 +1,48 @@
+<ion-view view-title="Tickets">
+<ion-item style="border:none">
+  <div class="addPlan">Tickets List</div>
+ </ion-item>
+  <ion-content  class="ParentContent" style="margin-top:50px;">
+  	<ion-item>
+       <br>
+     
+               
+   
+   
+    <div class = "card" ng-repeat="ticket in ticketsList">
+   <div class = "item item-text-wrap">
+   	<table style="width: 100%;">
+   		<tr>
+   			<td style="width: 50%">Ticket Id</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{ticket.id}}</td>
+
+   		</tr>
+   		<tr>
+   			<td style="width: 50%">Problem Description</td>
+   			<td style="width: 5%">:</td>
+
+   			<td style="width: 40%">{{ticket.problemDescription}}</td>
+   			
+   		</tr>
+   		<tr>
+   			<td style="width: 50%">Status</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{ticket.status}}</td>
+   		</tr>
+   		<tr>
+   			<td style="width: 50%">Ticket Date</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{ticket.ticketDate[0]}}-{{ticket.ticketDate[1]}}-{{ticket.ticketDate[2]}}</td>
+   		</tr>
+   	</table>
+    
+ </div>
+   </div>
+    
+
+
+</ion-item>
+  </ion-content>
+
+</ion-view>

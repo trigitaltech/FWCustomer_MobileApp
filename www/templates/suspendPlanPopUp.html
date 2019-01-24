@@ -1,0 +1,27 @@
+<div>
+	<form name="suspendForm" novalidate>
+	<label>Reason</label>
+	<!-- <textarea class="ion-input-select" name="reason" ng-model="suspend.selectedReason" name="reason" required>
+		
+	</textarea> -->
+	<select class="ion-input-select" name="reason" ng-model="suspend.selectedReason" required>
+		<option value="">Select Reason</option>
+		<option value="Non Payment"> Non Payment</option>
+        <option value="Customer Request">Customer Request</option>
+	</select>
+		
+	
+
+	 <p ng-show="suspendForm.reason.$invalid && !suspendForm.reason.$pristine" class="validation-msg"> Reason is required.</p>
+	<br>
+	
+	<div class="row">
+	<div class="col">
+	<button ng-click="closePopup()" class="button button-block button-energized">Cancel</button>	
+	</div>
+	<div class="col">
+		<button ng-disabled="suspendForm.$invalid" ng-click="suspendForm.$valid && suspendPlanSubmit()" class="button button-block button-positive">Save</button>
+	</div>
+	</div>
+</form>
+</div>

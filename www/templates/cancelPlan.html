@@ -1,0 +1,62 @@
+<ion-view view-title="Cancel Plan">
+	<ion-item style="border:none">
+		<div class="addPlan">Current Plan List</div>
+	 </ion-item>
+		<ion-content  class="ParentContent" style="margin-top:50px;">
+			<ion-item>
+			<div ng-if="plan.PLAN_STATUS == 'Active'" class = "card" ng-repeat="plan in plansData">
+		 <div class = "item item-text-wrap">
+			<table style="width: 100%;"  >
+				<tr>
+					<td style="width: 50%">Plan Name</td>
+					<td style="width: 5%">:</td>
+					<td style="width: 40%">{{plan.PLAN_NAME}}</td>
+	
+				</tr>
+				<tr>
+					<td style="width: 50%">Plan Status</td>
+					<td style="width: 5%">:</td>
+	
+					<td style="width: 40%">{{plan.PLAN_STATUS}}</td>
+					<td><input type="checkbox" id="myCheck" ng-model="plan.checkStatus" ng-click="planClick(plan)"></td>
+				</tr>
+				<!-- <tr>
+					<td style="width: 50%">Code</td>
+					<td style="width: 5%">:</td>
+					<td style="width: 40%">{{plan.planCode}}</td>
+				</tr> -->
+			 <!--  <tr>
+					<td style="width: 50%">Description</td>
+					<td style="width: 5%">:</td>
+					<td style="width: 40%">{{plan.planDescription}}</td>
+				</tr> -->
+			</table>
+			
+	 </div>
+		 </div>
+	
+			<p style="color:red;text-align: center;font-size: 20px">
+				{{errorMsg}}
+			</p>
+	
+			 <div class="row" >
+				<div class="col col-25">
+				</div>
+				<div class="col col-50" style="text-align: right;"><button ng-click="cancelPlanSubmit()" class="button button-block button-energized">PROCEED</button>
+				</div>
+				<div class="col col-25">
+				</div>
+			</div>
+	
+	</ion-item>
+		</ion-content>
+	<!--   <div class="bar bar-footer">
+			<div class="row" style="margin-top: -10px;">
+				<div class="col"><button class="button button-small button-dark">BACK</button>
+				</div>
+				<div class="col" style="text-align: right;"><button ng-click="changePlan()" class="button button-small button-energized">PROCEED</button>
+				</div>
+			</div>
+		</div> -->
+	</ion-view>
+	

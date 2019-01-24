@@ -1,0 +1,36 @@
+<ion-view view-title="Package Count Report">
+<!--<ion-item style="border:none">
+  <div class="addPlan">Plan Details</div> 
+ </ion-item>-->
+  <ion-content  class="ParentContent" style="margin-top:50px;">
+  	<ion-item>
+    <div  class = "card" ng-repeat="plan in packageDate">
+   <div class = "item item-text-wrap">
+
+		 <table  style="width: 100%;"  >
+			
+   		<tr>
+   			<td style="width: 50%">Base Plan Name</td>
+   			<td style="width: 5%">:</td>
+   			<td style="width: 40%">{{plan.BASE_PLAN_NAME}}</td>
+
+   		</tr>
+   	
+   		<tr>
+   			
+   		</tr>
+      <tr>
+        <td style="width: 50%">Package Count</td>
+        <td style="width: 5%">:</td>
+        <td style="width: 40%">{{plan.PACKAGE_COUNT}}</td>
+      </tr>
+   	</table>
+    
+ </div>
+   </div>
+   
+
+</ion-item>
+  </ion-content>
+
+</ion-view>
