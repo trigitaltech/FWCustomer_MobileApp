@@ -3,7 +3,7 @@ appCtrl.controller('viewticketsController', function($scope,$q,$http,services,$s
 
  $scope.$on('$ionicView.enter', function() {
     $scope.errorMsg = ''
-    services.tickets().then(resp=>{
+    services.tickets($localStorage.ACCOUNT_NO).then(resp=>{
         console.log(resp);
         $scope.tickets = resp.data;
         if(resp.data.length==0)

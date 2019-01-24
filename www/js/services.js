@@ -151,7 +151,7 @@ angular.module('RestAPIServices', ['ApiConfig'])
          url:apiUrl,
          headers: {
            'CREDS': JSON.stringify(config.CREDObj),
-		   'PARAMS': 7
+		   'ACC': params
          }}
      return $http(req);
     },
