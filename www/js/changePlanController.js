@@ -78,7 +78,8 @@ $scope.$on('$ionicView.enter', function() {
      };
  
    document.addEventListener("deviceready", function () {
-     $cordovaInAppBrowser.open('http://123.63.148.119:2462/paytm_java/WebContent/pgRedirect.jsp?TXN_AMOUNT='+$localStorage.changePlanAmount+'&ORDER_ID='+orderId+'&CUST_ID='+custid, '_blank', options)
+    $cordovaInAppBrowser.open('http://123.63.148.119:2462/paytm_java/pgRedirect.jsp?TXN_AMOUNT='+$localStorage.changePlanAmount+'&ORDER_ID='+orderId+'&CUST_ID='+custid+'&LCOID='+$localStorage.LCO_ACCOUNT_NO, '_blank', options)
+     //$cordovaInAppBrowser.open('http://123.63.148.119:2462/paytm_java/WebContent/pgRedirect.jsp?TXN_AMOUNT='+$localStorage.changePlanAmount+'&ORDER_ID='+orderId+'&CUST_ID='+custid, '_blank', options)
        .then(function(event) {
          // success
        })
@@ -113,7 +114,7 @@ $scope.$on('$ionicView.enter', function() {
        PAY_TYPE= strings[strings.length-2];
      }
      
-     if(event.url=="http://123.63.148.119:2462/paytm_java/WebContent/pgResponse.jsp")
+     if(event.url=="http://123.63.148.119:2462/paytm_java/pgResponse.jsp")
      {
       var cardtype = 'CARD';
       if(PAY_TYPE=='CC')
