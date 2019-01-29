@@ -10,7 +10,8 @@ appCtrl.controller('ticketController', function($scope,$ionicPopup,$rootScope,$c
       "CUSTOMER_NOTES":	$scope.ticket.description
   
        };
-       services.addTicket(ticketobj).then(function(response){
+       var obj = JSON.parse(angular.toJson(ticketobj))
+       services.addTicket(obj).then(function(response){
 	
       
          console.log(response);

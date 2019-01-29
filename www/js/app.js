@@ -286,6 +286,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
+  .state('common.paymentrefunddetail', {
+    url: '/paymentrefunddetail',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/paymentrefunddetail.html',
+        
+      }
+    }
+  })
+
+
+
+
+
 
   .state('common.addPlan', {
     url: '/addPlan',
