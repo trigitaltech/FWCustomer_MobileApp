@@ -272,7 +272,7 @@ $scope.$on('$ionicView.enter', function() {
             console.log(err);
             var ticketobj = {
               "CUST_ACCOUNT_NO":$localStorage.ACCOUNT_NO,
-            "NOTES_TYPE":"Raise a complaint",
+            "NOTES_TYPE":"complaint",
               "CUSTOMER_NOTES":	"change Plan failed"
           
                };

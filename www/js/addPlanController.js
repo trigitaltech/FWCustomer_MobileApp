@@ -347,7 +347,7 @@ if($localStorage.selectedPlans)
         $localStorage.addPlanCompleted=1;
         var ticketobj = {
           "CUST_ACCOUNT_NO":$localStorage.ACCOUNT_NO,
-        "NOTES_TYPE":"Raise a complaint",
+        "NOTES_TYPE":"complaint",
           "CUSTOMER_NOTES":	"add Plan failed"
       
            };
