@@ -162,7 +162,8 @@ if($localStorage.selectedPlans)
     services.getPlanPrice(obj).then(response=>{
 
       console.log(response);
-      $localStorage.amount = response.data;		
+      $localStorage.amount = response.data.TOTAL;
+      $localStorage.totalPrice = response.data		
       $state.go('common.selectedPlanList');
 
     },error=>{
@@ -170,7 +171,7 @@ if($localStorage.selectedPlans)
     })
       }
     }
-    $scope.totalPrice = $localStorage.amount;
+    $scope.totalPrice = $localStorage.totalPrice;
     function getPlansCodes()
     {
       var planCodesArray = [];
@@ -317,12 +318,16 @@ if($localStorage.selectedPlans)
      services.addPayment(obj).then(function(response){
       console.log(response);
       $localStorage.addPlanCompleted=0;
+      $localStorage.receiptNumber = response.data.OBRM_RECEIPT_NO;
+        $localStorage.referenceId = response.data.REFERENCE_ID;
       var addPlanObject = {"ACCOUNT_NO":$localStorage.ACCOUNT_NO,"ACCOUNT_POID": $localStorage.ACCOUNT_POID,
            "SERVICE_OBJ": $localStorage.SERVICE_OBJ,"PLAN_LIST":postObject($localStorage.selectedPlans)};  
          
            var obj =  JSON.parse(angular.toJson(addPlanObject))
       services.addPlan(obj).then(function(response){
         $ionicLoading.hide();
+        $state.go('common.receipt');
+
 
         $localStorage.addPlanCompleted=1;
       

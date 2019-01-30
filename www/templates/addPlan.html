@@ -4,76 +4,53 @@
 	
 
  <div class="bar" style="position:absolute; top:10px;">
+  
+  <div class="row">
     <div class="addPlan" style="position:absolute; top:0px;">Plan List</div>
     <select style="border:1px solid lightgray;width:100%;padding-left: 5px;box-shadow: black;margin-top: 90px;" class="ion-input-select" name="paymentType" ng-options="category as category.PLAN_LIST_NAME for category in planDetails" ng-change="getPlansByPlanListId()" ng-model="plan.CategoryId" required>
       <option value="">Select Plan Category</option>
     </select>
-    <!-- <input style="border:1px solid lightgray;width:100%;padding-left: 5px;box-shadow: black;margin-top: 90px;" placeholder="Search Plan" type = "text" ng-model="search" name="search"> -->
-</div>
-  <ion-content  class="ParentContent" style="margin-top:40px;">
-    <br>
-    <br>
-<!-- <br>
-<br>
+  </div>
+   
+  <div class="bar">
+    <input style="border:1px solid lightgray;width:100%;padding-left: 5px;box-shadow: black;margin-top: 140px;" placeholder="Search Plan" type = "text" ng-model="search" name="search">
 
-	 <label>Plan Category</label>
-	         <br>
-	       <select class="ion-input-select" name="paymentType" ng-options="category as category.PLAN_LIST_NAME for category in planDetails" ng-change="getPlansByPlanListId()" ng-model="plan.CategoryId" required>
-	                 <option value="">Select</option>
-	       </select>
-<br> -->
+  </div>
+
+   </div>
+
+
+
+  <ion-content  class="ParentContent" style="margin-top:130px;margin-bottom: 40px;">
+    <br>
     <div class= "text"  ng-repeat="plans in plansList| filter: search">
    <div class = "card" >
     <div class = "item item-text-wrap">
    	 <table style="width: 100%;">
-   		<tr>
-
-   			<td style="width: 40%">Plan List</td>
-   			<td style="width: 5%">:</td>
-   			<td style="width: 50%">{{plan.CategoryId.PLAN_LIST_NAME}}</td>
-
-   		</tr>
-   			<!--<tr>
-   		<td style="width: 40%">City</td>
-   			<td style="width: 5%">:</td>
-
-   			<td style="width: 50%">{{plan.CategoryId.CITY}}</td>
-   			
-   		</tr>-->
+   		
    		<tr>
    			<td style="width: 40%">Plan Name</td>
    			<td style="width: 5%">:</td>
    			<td style="width: 50%">{{plans.CODE}}</td>
 			<td><input type="checkbox" id="myCheck" ng-change= "planSelected(plans)" ng-model="plans.checkStatus" ></td>
    		</tr>
-   		<!--<tr>
-   			<td style="width: 40%">Description</td>
-   			<td style="width: 5%">:</td>
-   			<td style="width: 50%">{{plans.DESCRIPTION}}</td>
-   		</tr>-->
+   		
      </table>
      </div>
     
  </div>
+ 
    </div>
   
      <p style="color:red;text-align: center;font-size: 20px">
       {{errorMsg}}
     </p>
-   <!-- <div class="row" ng-if="planDetails.length>0">
-      <div class="col col-25">
-      </div>
-      <div class="col col-40" style="text-align: right;"><button ng-click="showPlansSelected()" class="button button-block button-energized">PROCEED</button>
-      </div>
-      <div class="col col-25">
-      </div>
-    </div> -->
+   
 
 </ion-item>
 
   </ion-content>
-  <div class="bar" style="position:absolute; bottom:0; text-align:center" >
- 
+  <div class="bar" style="position:absolute; bottom:0; text-align:center;margin-top: 30px;">
       <div style="margin-top:-25px" class="row">
         <div class="col col-50">
             <button ng-click="back()" class="button button-block button-dark ">BACK</button>

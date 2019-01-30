@@ -239,6 +239,8 @@ $scope.$on('$ionicView.enter', function() {
 
      services.addPayment(obj).then(function(response){
       console.log(response);
+      $localStorage.receiptNumber = response.data.OBRM_RECEIPT_NO;
+        $localStorage.referenceId = response.data.REFERENCE_ID;
       
      
       $scope.errorMsg=""
@@ -256,6 +258,8 @@ $scope.$on('$ionicView.enter', function() {
 
           services.changePlan(obj).then(function(response){
             console.log(response);
+            $state.go('common.receipt');
+
             $ionicLoading.hide();
                          swal({
                               title: "Change Plan ",

@@ -180,7 +180,7 @@ angular.module('RestAPIServices', ['ApiConfig'])
          url:apiUrl,
          headers: {
            'CREDS': JSON.stringify(config.CREDObj),
-		   'ACC': JSON.stringify(params)
+		   'ACC': params
          }}
      return $http(req);
     },

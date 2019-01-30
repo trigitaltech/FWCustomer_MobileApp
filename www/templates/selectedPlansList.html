@@ -42,10 +42,19 @@
                   </div>
                     </div>
                     <div class="text">
-                        Total Amount: {{totalPrice}}
-                      </div>
+                        Total Amount: {{totalPrice.TOTAL }}₹
+                    </div>
                     <div style = "margin-top:8px" class="text">
                         <span style="color:red">*</span> The price includes the NCF and 18% GST 
+                    </div>
+                    <div class="text">
+                        Base Cost: {{totalPrice.PRICE }}₹
+                    </div>
+                    <div class="text">
+                        NCF: {{totalPrice.NCF }}₹
+                    </div>
+                    <div class="text">
+                        GST: {{totalPrice.GST }}₹
                     </div>
      <p style="color:red;text-align: center;font-size: 20px">
       {{errorMsg}}
