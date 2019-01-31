@@ -147,7 +147,9 @@ $scope.$on('$ionicView.enter', function() {
 
     services.getPlanPrice(obj).then(function(response){
       console.log(response);
-      $localStorage.changePlanAmount = response.data;
+      $localStorage.changePlanAmount = response.data.TOTAL;
+      $localStorage.totalPrice = response.data		
+      
       $state.go('common.changePlanSelectedPlan');
 
     },function(err){
@@ -163,7 +165,7 @@ $scope.$on('$ionicView.enter', function() {
              alert("please select atleast one plan")
            }
       }
-      $scope.totalPrice = $localStorage.changePlanAmount;
+      $scope.totalPrice = $localStorage.totalPrice;
      var count =0;
      var newPlanList = [];
       $scope.planSelected = function(plans)
@@ -240,9 +242,11 @@ $scope.$on('$ionicView.enter', function() {
      services.addPayment(obj).then(function(response){
       console.log(response);
       $localStorage.receiptNumber = response.data.OBRM_RECEIPT_NO;
-        $localStorage.referenceId = response.data.REFERENCE_ID;
+      $localStorage.referenceId = response.data.REFERENCE_ID;
+      $localStorage.amountPaid= paymentObj.PAID_AMOUNT;
+      $localStorage.CASH_DATE = paymentObj.CASH_DATE;
+      $localStorage.payType = paymentObj.PAY_TYPE;
       
-     
       $scope.errorMsg=""
         var currentDate = new Date();
      var dateFormatted =  $filter('date')(currentDate,"dd MMMM yyyy");

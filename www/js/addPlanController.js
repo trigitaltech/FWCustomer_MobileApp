@@ -318,8 +318,14 @@ if($localStorage.selectedPlans)
      services.addPayment(obj).then(function(response){
       console.log(response);
       $localStorage.addPlanCompleted=0;
-      $localStorage.receiptNumber = response.data.OBRM_RECEIPT_NO;
+        $localStorage.receiptNumber = response.data.OBRM_RECEIPT_NO;
         $localStorage.referenceId = response.data.REFERENCE_ID;
+        $localStorage.amountPaid= paymentObj.PAID_AMOUNT;
+        $localStorage.CASH_DATE = paymentObj.CASH_DATE;
+        $localStorage.payType = paymentObj.PAY_TYPE;
+        
+
+
       var addPlanObject = {"ACCOUNT_NO":$localStorage.ACCOUNT_NO,"ACCOUNT_POID": $localStorage.ACCOUNT_POID,
            "SERVICE_OBJ": $localStorage.SERVICE_OBJ,"PLAN_LIST":postObject($localStorage.selectedPlans)};  
          

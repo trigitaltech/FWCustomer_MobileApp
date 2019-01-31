@@ -19,7 +19,8 @@ appCtrl.controller('receiptCtrl', function($scope,$http,$location,services,$stat
           "CHEQUE_DATE": $localStorage.CHEQUE_DATE,
           "receiptNumber": $localStorage.receiptNumber,
           "remarks": $localStorage.remarks,
-          "amountPaid": $localStorage.amountPaid
+          "amountPaid": $localStorage.amountPaid,
+          "TransactionType":$localStorage.payType
           
 
 
