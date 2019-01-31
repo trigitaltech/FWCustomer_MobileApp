@@ -75,7 +75,7 @@ if($localStorage.selectedPlans)
 
       angular.forEach(PlanList,function(plans){
         delete plans.checkStatus;
-        plans.POID = $localStorage.ACCOUNT_POID;
+       
       })
 
       plansFinal.push({'PLAN_LIST_NAME':$scope.plan.CategoryId.PLAN_LIST_NAME,
@@ -332,7 +332,6 @@ if($localStorage.selectedPlans)
            var obj =  JSON.parse(angular.toJson(addPlanObject))
       services.addPlan(obj).then(function(response){
         $ionicLoading.hide();
-        $state.go('common.receipt');
 
 
         $localStorage.addPlanCompleted=1;
@@ -347,7 +346,8 @@ if($localStorage.selectedPlans)
 
                             });
 
-                              $state.go('common.customerSearch');
+                            $state.go('common.receipt');
+
 
       },function(err){
 

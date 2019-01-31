@@ -273,7 +273,7 @@ $scope.$on('$ionicView.enter', function() {
                           }, function() {
 
                           });
-                           $state.go('common.customerSearch');
+                           //$state.go('common.customerSearch');
 
           },function(err){
              $ionicLoading.hide();
