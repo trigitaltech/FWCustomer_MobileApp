@@ -11,7 +11,7 @@ if($localStorage.selectedPlans)
   $scope.plansSelected = $localStorage.selectedPlans;
   
 }
-
+$scope.plan = {}
     function getPlanDetails()
     {
       services.getPlanDetails($localStorage.clientId,0).then(function(response){
@@ -23,7 +23,7 @@ if($localStorage.selectedPlans)
       })
     }
 
-
+$scope.plansList = [];
     $scope.getPlansByPlanListId = function()
     {
       $ionicLoading.show();
@@ -43,11 +43,8 @@ if($localStorage.selectedPlans)
       })
     }
 
-
-
-
-    if($location.path()=='/common/addPlan')
-      getPlanDetails();
+    if($location.path()=='/common/addPlan');
+       getPlanDetails();
 
     function getIndexOfPlanArray(id)
     {
@@ -75,7 +72,7 @@ if($localStorage.selectedPlans)
 
       angular.forEach(PlanList,function(plans){
         delete plans.checkStatus;
-       
+        plans.POID = $localStorage.ACCOUNT_POID;
       })
 
       plansFinal.push({'PLAN_LIST_NAME':$scope.plan.CategoryId.PLAN_LIST_NAME,
@@ -108,7 +105,9 @@ if($localStorage.selectedPlans)
 
     $scope.back = function()
     {
-      $ionicHistory.goBack() 
+		$location.path('/common/addPlan');
+		
+		getPlanDetails();
     }
     
 
@@ -201,7 +200,14 @@ if($localStorage.selectedPlans)
     }
 
     $localStorage.addPlanCompleted=1;
-	
+	console.log("HII")
+	console.log($localStorage.totalPrice );
+    if($localStorage.totalPrice >= 10)
+	{
+		alert('please select plan price above 10 Rupees');
+	}
+	else
+	{
     $scope.paytm =function()
     {
 
@@ -239,7 +245,7 @@ if($localStorage.selectedPlans)
     }
       
     }
-
+}
     var CARD_TRANSACTION_ID ;
   var PAY_TYPE;
 
@@ -332,6 +338,7 @@ if($localStorage.selectedPlans)
            var obj =  JSON.parse(angular.toJson(addPlanObject))
       services.addPlan(obj).then(function(response){
         $ionicLoading.hide();
+        $state.go('common.receipt');
 
 
         $localStorage.addPlanCompleted=1;
@@ -346,8 +353,7 @@ if($localStorage.selectedPlans)
 
                             });
 
-                            $state.go('common.receipt');
-
+                              $state.go('common.customerSearch');
 
       },function(err){
 
@@ -358,7 +364,7 @@ if($localStorage.selectedPlans)
         $localStorage.addPlanCompleted=1;
         var ticketobj = {
           "CUST_ACCOUNT_NO":$localStorage.ACCOUNT_NO,
-        "NOTES_TYPE":"complaint",
+          "NOTES_TYPE":"complaint",
           "CUSTOMER_NOTES":	"add Plan failed"
       
            };
