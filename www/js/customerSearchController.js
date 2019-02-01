@@ -7,6 +7,8 @@ $scope.$on('$ionicView.enter', function() {
    $scope.customerDataShow = false;
    $scope.searchCustomer = true;
    $scope.errorMsg= "";
+   $localStorage.selectedPlans=undefined;
+   $localStorage.planListSelected=undefined;
    $scope.roundNumber = function(num)
    {
      var number = parseFloat(num);

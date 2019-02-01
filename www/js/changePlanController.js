@@ -187,6 +187,10 @@ $scope.$on('$ionicView.enter', function() {
       }
 
     
+      $scope.back = function()
+      {
+        $ionicHistory.goBack() 
+      }
 
      var currentPlanList = []
       $scope.planClickCurrent = function(plan)
