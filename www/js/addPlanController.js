@@ -6,6 +6,15 @@ appCtrl.controller('addPlanController', function($scope,$q,$http,$location,$root
 $localStorage.planId=undefined;
 $localStorage.changePlanId=undefined;
 $scope.amount = 0;
+$scope.plan = {};
+$scope.planCategories = [];
+$scope.planDetails = [];
+$scope.plansList=[];
+
+
+
+ var PlanList = [];
+
 if($localStorage.selectedPlans)
 {
   $scope.plansSelected = $localStorage.selectedPlans;
@@ -16,10 +25,43 @@ if($localStorage.selectedPlans)
     {
       services.getPlanDetails($localStorage.clientId,0).then(function(response){
         console.log(response);
-		 $scope.planDetails = response.data.PLAN_LIST;
+		     $scope.planDetails = response.data.PLAN_LIST;
 	  	 //$scope.city = $localStorage.city;
       },function(err){
         console.log(err);
+      })
+    }
+
+    function getSelectedPlanListItem(CategoryId){
+      var selectedPlanList;
+      angular.forEach($scope.planDetails,resp=>{
+        if(resp.PLAN_LIST_ID==CategoryId)
+        selectedPlanList= resp;
+      })
+
+      return selectedPlanList;
+    }
+
+    if($localStorage.selectedPlans!=undefined)
+    {
+      $scope.plan={};
+      PlanList= $localStorage.selectedPlans[0].PLANS;
+      angular.forEach(PlanList,function(resp){
+        resp.checkStatus=true;
+      })
+      console.log(PlanList);
+      
+      services.getPlansListByListId($localStorage.planListSelected.PLAN_LIST_ID).then(resp=>{
+        $scope.plan.CategoryId= $localStorage.planListSelected.PLAN_LIST_ID;
+        $scope.plansList = resp.data.ID_BASED_PLAN_LIST;
+        angular.forEach($scope.plansList,plan=>{
+          angular.forEach(PlanList,splan=>{
+            if(plan.PLAN_ID==splan.PLAN_ID)
+               plan.checkStatus=true;
+          })
+        })
+      },error=>{
+        console.log(error);
       })
     }
 
@@ -28,7 +70,9 @@ if($localStorage.selectedPlans)
     {
       $ionicLoading.show();
 
-      services.getPlansListByListId($scope.plan.CategoryId.PLAN_LIST_ID).then(resp=>{
+      services.getPlansListByListId($scope.plan.CategoryId).then(resp=>{
+
+        $localStorage.planListSelected =getSelectedPlanListItem($scope.plan.CategoryId);
 
         $ionicLoading.hide();
 
@@ -59,15 +103,7 @@ if($localStorage.selectedPlans)
           }
         }
     }
-    var planArray = [];
-    $scope.plan = {};
-    $scope.planCategories = [];
-    $scope.planDetails = [];
-
-
-
-     var PlanList = [];
-    //getPlanCategories();
+   //getPlanCategories();
    
     function addPlanObjectPreparation()
     {
@@ -78,32 +114,14 @@ if($localStorage.selectedPlans)
        
       })
 
-      plansFinal.push({'PLAN_LIST_NAME':$scope.plan.CategoryId.PLAN_LIST_NAME,
-           'CITY':$scope.plan.CategoryId.CITY,'PLAN_LIST_ID':$scope.plan.CategoryId.PLAN_LIST_ID,
-           'SERVICE_TYPE':$scope.plan.CategoryId.SERVICE_TYPE,PLANS:PlanList})
-    
-      // var planPostObject = [];
-      //   angular.forEach($scope.planDetails,function(plansList,outerIndex){
-		  // planPostObject.push({'PLAN_LIST_NAME':plansList.PLAN_LIST_NAME,
-      //     'CITY':plansList.CITY,'PLAN_LIST_ID':plansList.PLAN_LIST_ID,
-      //     'SERVICE_TYPE':plansList.SERVICE_TYPE,PLANS:[]})
-      //     angular.forEach(PlanList,function(plan,innerIndex){
-      //       if(PlanList[innerIndex].plan.PLAN_LIST_ID==plansList.PLAN_LIST_ID)
-      //       {
-      //          delete plan.plan.CITY;
-      //          delete plan.plan.PLAN_LIST_ID;
-      //          delete plan.plan.PLAN_LIST_NAME;
-      //          //delete plan.plan.SERVICE_TYPE;
-      //          delete plan.plan.checkStatus;
-      //          delete plan.plan['$$hashKey'];
-			//    planPostObject[outerIndex].PLANS.push(plan.plan);
-      //       }
-
-      //     })
-      //   })
+      plansFinal.push({'PLAN_LIST_NAME':$localStorage.planListSelected.PLAN_LIST_NAME,
+           'CITY':$localStorage.planListSelected.CITY,'PLAN_LIST_ID':$localStorage.planListSelected.PLAN_LIST_ID,
+           'SERVICE_TYPE':$localStorage.planListSelected.SERVICE_TYPE,PLANS:PlanList})
          return plansFinal;
 
     }
+
+    
     
 
     $scope.back = function()
@@ -121,15 +139,6 @@ if($localStorage.selectedPlans)
     
             if(plans.checkStatus)
             {
-              
-			  //  plan.PLAN_LIST_ID = plans.PLAN_LIST_ID;
-        //        plan.CITY = plans.CITY;
-        //        plan.PLAN_LIST_NAME = plans.PLAN_LIST_NAME;
-        //        plan.SERVICE_TYPE = plans.SERVICE_TYPE;
-        //        plan.PLAN_SUBTYPE = "100"
-			   
-			  //  plan.PLAN_CODE = plans.CODE;
-		
                PlanList.push(plans);
             }
             else
@@ -153,9 +162,8 @@ if($localStorage.selectedPlans)
       }
       else
       {
-        $localStorage.selectedPlans = addPlanObjectPreparation();
+    $localStorage.selectedPlans = addPlanObjectPreparation();
 		$localStorage.amount =0;
-    //console.log(JSON.stringify($localStorage.selectedPlans));
     var priceObj = {"PLANCODES":getPlansCodes()};
     var obj = JSON.parse(angular.toJson(priceObj));
 
@@ -206,10 +214,11 @@ if($localStorage.selectedPlans)
     {
 
     console.log($localStorage.amount); 
-    if($localStorage.amount=="0" || $localStorage.amount=="0.00")
+    var amount = parseFloat($localStorage.amount);
+    console.log(amount);
+    if(amount<0.50)
     {
-      $scope.addPlans("","CASH");
-
+       alert("Please select more than one plan")
     }
     else
     {
@@ -245,7 +254,7 @@ if($localStorage.selectedPlans)
 
     $scope.$on('$cordovaInAppBrowser:loadstart', function(e, event){
       console.log(event.url);
-      if(event.url.includes('txn'))
+      if(event.url.includes('txn') || event.url.includes('transactionStatus'))
     {
       //console.log(event.url);
       console.log(event.url.split('?')[1].split('=')[1])
@@ -332,6 +341,7 @@ if($localStorage.selectedPlans)
            var obj =  JSON.parse(angular.toJson(addPlanObject))
       services.addPlan(obj).then(function(response){
         $ionicLoading.hide();
+        $localStorage.selectedPlans=undefined;
 
 
         $localStorage.addPlanCompleted=1;

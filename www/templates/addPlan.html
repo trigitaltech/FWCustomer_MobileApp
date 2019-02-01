@@ -7,7 +7,7 @@
   
   <div class="row">
     <div class="addPlan" style="position:absolute; top:0px;">Plan List</div>
-    <select style="border:1px solid lightgray;width:100%;padding-left: 5px;box-shadow: black;margin-top: 90px;" class="ion-input-select" name="paymentType" ng-options="category as category.PLAN_LIST_NAME for category in planDetails" ng-change="getPlansByPlanListId()" ng-model="plan.CategoryId" required>
+    <select style="border:1px solid lightgray;width:100%;padding-left: 5px;box-shadow: black;margin-top: 90px;" class="ion-input-select" name="paymentType" ng-options="category.PLAN_LIST_ID as category.PLAN_LIST_NAME for category in planDetails" ng-change="getPlansByPlanListId()" ng-model="plan.CategoryId" required>
       <option value="">Select Plan Category</option>
     </select>
   </div>
