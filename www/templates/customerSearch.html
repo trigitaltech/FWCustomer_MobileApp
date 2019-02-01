@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="col col-50"> Total Due Amount</div>
                     <div class="col col-10">:</div>
-                    <div class="col">{{roundNumber(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)}} <button ng-if="!checkNegativeNumber(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)" class="pay-btn" ng-click="paytm(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)">Pay now</button></button></div>
+                    <div class="col">{{roundNumber(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)}}₹ <button ng-if="!checkNegativeNumber(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)" class="pay-btn" ng-click="paytm(customerData.CURRENT_BALANCE_INC_PENDING_CHARGES)">Pay now</button></button></div>
                 </div>
                 <div class="row" ng-if="customerData.type!='C'">
                     <div class="col col-50">Customer Type</div>
@@ -106,7 +106,7 @@
               <ion-floating-item ng-if="!customerSearch" ng-click="payment()" button-color="green" icon="icon ion-plus" text="Online Payment"></ion-floating-item>
           
             <ion-floating-item ng-click="AddPlan()" button-color="green" icon="icon ion-plus" text="Add Plan"></ion-floating-item>
-            <ion-floating-item ng-click="changePlan()" button-color="green" icon="icon ion-loop" text="Change Plan"></ion-floating-item>
+            <!--<ion-floating-item ng-click="changePlan()" button-color="green" icon="icon ion-loop" text="Change Plan"></ion-floating-item>-->
             <ion-floating-item ng-click="cancelPlan()" button-color="green" icon="icon ion-close" text="Cancel Plan"></ion-floating-item>
             <ion-floating-item ng-if="!customerSearch" ng-click="SuspendPlan('suspend')" button-color="green" icon="icon ion-close" text="Suspend Plan"></ion-floating-item>
             <ion-floating-item ng-if="!customerSearch" ng-click="SuspendPlan('reactivate')" button-color="green" icon="icon ion-close" text="Reactivate Plan"></ion-floating-item>
