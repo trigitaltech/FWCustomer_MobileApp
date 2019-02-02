@@ -216,7 +216,7 @@ if($localStorage.selectedPlans)
     console.log($localStorage.amount); 
     var amount = parseFloat($localStorage.amount);
     console.log(amount);
-    if(amount<0.50)
+    if(amount<1.00)
     {
        alert("Please select more than one plan")
     }
@@ -369,12 +369,12 @@ if($localStorage.selectedPlans)
         var ticketobj = {
           "CUST_ACCOUNT_NO":$localStorage.ACCOUNT_NO,
         "NOTES_TYPE":"complaint",
-          "CUSTOMER_NOTES":	"add Plan failed"
+          "CUSTOMER_NOTES":"add Plan Failed with"+':'+'Amount:'+$localStorage.amount+'Plans:'+$localStorage.selectedPlans
       
            };
            services.addTicket(ticketobj).then(response=>{
             swal({
-              title: "Ticket Raised",
+              title: "Add Plan Failed - Ticket Raised",
                text: "",
              type: "error",
              confirmButtonColor: "#007AFF"
